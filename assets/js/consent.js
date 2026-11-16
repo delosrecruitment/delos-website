@@ -68,6 +68,13 @@
     banner.hidden = false;
   }
 
+  /* Booking clicks are recorded as the book_call key event (only once analytics is on). */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href*="calendar.app.google"]');
+    if (!a || !window.gtag) return;
+    gtag('event', 'book_call', { call_type: /career/i.test(a.textContent) ? 'career' : 'hiring', page_path: location.pathname, transport_type: 'beacon' });
+  });
+
   document.addEventListener('click', function (e) {
     var link = e.target.closest && e.target.closest('[data-cookie-settings]');
     if (!link) return;
