@@ -75,6 +75,14 @@
     gtag('event', 'book_call', { call_type: /career/i.test(a.textContent) ? 'career' : 'hiring', page_path: location.pathname, transport_type: 'beacon' });
   });
 
+  /* Email, phone and WhatsApp clicks are recorded as the contact_click key event. */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="mailto:"], a[href^="tel:"], a[href*="wa.me/"]');
+    if (!a || !window.gtag) return;
+    var h = a.getAttribute('href');
+    gtag('event', 'contact_click', { contact_method: h.indexOf('mailto:') === 0 ? 'email' : h.indexOf('tel:') === 0 ? 'phone' : 'whatsapp', page_path: location.pathname, transport_type: 'beacon' });
+  });
+
   document.addEventListener('click', function (e) {
     var link = e.target.closest && e.target.closest('[data-cookie-settings]');
     if (!link) return;
