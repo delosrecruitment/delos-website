@@ -8,6 +8,7 @@ Website for Delos Recruitment Ltd (company number 16163283), a specialist rec2re
 - Do the task given, then stop. Don't refactor, restyle or "improve" anything outside it.
 - Small targeted edits in place. Never rewrite a whole file to change a few lines.
 - No long checks, no tool installs. Open the page once at the end to confirm it renders.
+- Never say candidates are never charged or that it is free for candidates (not accepted copy, never use).
 - Never invent facts (testimonials, client names, numbers, fees, statistics). Missing content gets a placeholder: `[MARIA TO CONFIRM: ...]`.
 - End each session with a short list of what changed and any placeholders left.
 - Before pushing: `git fetch -q origin && git rebase -q origin/main`. GitHub Pages goes live within a couple of minutes.
